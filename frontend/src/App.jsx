@@ -46,14 +46,14 @@ function App() {
     }));
   };
 
-  // Form submit handler connecting to FastAPI + MySQL backend
+  // Form submit handler connecting to Vercel serverless function /api/send
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatusMsg('');
 
     try {
-      const response = await fetch('http://localhost:8000/api/briefs', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,13 +75,13 @@ function App() {
         });
       } else {
         setStatusType('error');
-        setStatusMsg(data.detail || 'Could not save brief. Please check your inputs.');
+        setStatusMsg(data.error || 'Could not send brief. Please check your inputs.');
       }
     } catch (err) {
       // Graceful fallback if backend is offline during frontend-only validation
       setStatusType('error');
-      setStatusMsg('Connection offline. Your details have been cached locally. (API server not running on port 8000)');
-      console.warn("API Server offline. Details cached locally:", formData);
+      setStatusMsg('Connection offline. Your details have been cached locally. (Resend API offline or Vercel dev server not running)');
+      console.warn("API offline. Details cached locally:", formData);
     } finally {
       setIsSubmitting(false);
     }
