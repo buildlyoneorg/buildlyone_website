@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
+const heroImages = [
+  { src: "/images/03.jpeg", alt: "Architectural 3D wireframe cube", label: "System Architecture [03]" },
+  { src: "/images/08.jpeg", alt: "Perspective network data grid", label: "Data Infrastructure [08]" },
+  { src: "/images/10.jpeg", alt: "Vertical ledger pillars of light", label: "Financial Ledger [10]" }
+];
+
 function App() {
-  // State for theme: default to 'dark' as specified in the Brand Voice .docx
-  const [theme, setTheme] = useState('dark');
+  // State for theme: default to 'light' as requested
+  const [theme, setTheme] = useState('light');
+
+  // Sync theme class list on change
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-theme');
+    } else {
+      document.documentElement.classList.remove('light-theme');
+    }
+  }, [theme]);
 
   // Toggle theme utility
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
-    if (nextTheme === 'light') {
-      document.documentElement.classList.add('light-theme');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-    }
   };
 
   // State for the client intake form
@@ -36,6 +46,16 @@ function App() {
     "Enquire about availability"
   ];
   const [selectedCta, setSelectedCta] = useState(0);
+
+
+  const [activeHeroIdx, setActiveHeroIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveHeroIdx(prev => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Form input changes
   const handleInputChange = (e) => {
@@ -77,7 +97,7 @@ function App() {
         setStatusType('error');
         setStatusMsg(data.error || 'Could not send brief. Please check your inputs.');
       }
-    } catch (err) {
+    } catch {
       // Graceful fallback if backend is offline during frontend-only validation
       setStatusType('error');
       setStatusMsg('Connection offline. Your details have been cached locally. (Resend API offline or Vercel dev server not running)');
@@ -102,6 +122,7 @@ function App() {
               className="theme-toggle-btn"
               onClick={toggleTheme}
               aria-label="Toggle visual theme"
+              style={{ display: 'none' }}
             >
               Theme: {theme === 'dark' ? 'Dark' : 'Light'}
             </button>
@@ -114,29 +135,52 @@ function App() {
 
       {/* HERO SECTION */}
       <section className="hero">
-        <div className="container hero-content">
-          <h1>Built for one standard.</h1>
-          <p>
-            buildlyone is a software engineering agency for banks, enterprises, and governments across Africa and beyond. We build the systems your operations depend on.
-          </p>
-          <div className="hero-ctas">
-            <a href="#contact" className="btn-primary">
-              Discuss your project &rarr;
-            </a>
-            <a href="#work" className="btn-secondary">
-              See our work &rarr;
-            </a>
+        <div className="container hero-grid">
+          <div className="hero-content">
+            <h1>Built for one standard.</h1>
+            <p>
+              buildlyone is a software engineering agency for banks, enterprises, and governments across Africa and beyond. We build the systems your operations depend on.
+            </p>
+            <div className="hero-ctas">
+              <a href="#contact" className="btn-primary">
+                Discuss your project &rarr;
+              </a>
+              <a href="#work" className="btn-secondary">
+                See our work &rarr;
+              </a>
+            </div>
+            <div className="hero-tags">
+              <span className="tag-small">Custom software</span>
+              <span className="tag-small">&middot;</span>
+              <span className="tag-small">Financial infrastructure</span>
+              <span className="tag-small">&middot;</span>
+              <span className="tag-small">Enterprise systems</span>
+              <span className="tag-small">&middot;</span>
+              <span className="tag-small">API integrations</span>
+              <span className="tag-small">&middot;</span>
+              <span className="tag-small">AI & data</span>
+            </div>
           </div>
-          <div className="hero-tags">
-            <span className="tag-small">Custom software</span>
-            <span className="tag-small">&middot;</span>
-            <span className="tag-small">Financial infrastructure</span>
-            <span className="tag-small">&middot;</span>
-            <span className="tag-small">Enterprise systems</span>
-            <span className="tag-small">&middot;</span>
-            <span className="tag-small">API integrations</span>
-            <span className="tag-small">&middot;</span>
-            <span className="tag-small">AI & data</span>
+          <div className="hero-image-container">
+            <img 
+              src={heroImages[activeHeroIdx].src} 
+              alt={heroImages[activeHeroIdx].alt} 
+              className="hero-image blend-image" 
+            />
+            <div className="hero-image-label">
+              {heroImages[activeHeroIdx].label}
+            </div>
+            <div className="hero-image-dots">
+              {heroImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`hero-dot ${activeHeroIdx === idx ? 'active' : ''}`}
+                  onClick={() => setActiveHeroIdx(idx)}
+                  aria-label={`Show slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -291,6 +335,10 @@ function App() {
               <p className="section-body" style={{ fontSize: '1.1rem' }}>
                 We take on a limited number of engagements each quarter. If you’re building something that demands excellence, we’d like to hear about it.
               </p>
+            </div>
+            
+            <div className="contact-map-wrapper">
+              <img src="/images/13.jpeg" alt="Global network connectivity map showing buildlyone reach" className="contact-map-image blend-image" />
             </div>
             
             {/* Interactive selector for A/B testing CTAs */}
