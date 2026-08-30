@@ -7,24 +7,6 @@ const heroImages = [
 ];
 
 function App() {
-  // State for theme: default to 'light' as requested
-  const [theme, setTheme] = useState('light');
-
-  // Sync theme class list on change
-  useEffect(() => {
-    if (theme === 'light') {
-      document.documentElement.classList.add('light-theme');
-    } else {
-      document.documentElement.classList.remove('light-theme');
-    }
-  }, [theme]);
-
-  // Toggle theme utility
-  const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-  };
-
   // State for the client intake form
   const [formData, setFormData] = useState({
     client_name: '',
@@ -37,15 +19,6 @@ function App() {
   const [statusMsg, setStatusMsg] = useState('');
   const [statusType, setStatusType] = useState(''); // 'success' or 'error'
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // CTA variations for A/B testing as defined in the Brand Voice document
-  const ctaOptions = [
-    "Send us a brief",
-    "Tell us about your project",
-    "Let’s discuss what you’re building",
-    "Enquire about availability"
-  ];
-  const [selectedCta, setSelectedCta] = useState(0);
 
 
   const [activeHeroIdx, setActiveHeroIdx] = useState(0);
@@ -98,10 +71,9 @@ function App() {
         setStatusMsg(data.error || 'Could not send brief. Please check your inputs.');
       }
     } catch {
-      // Graceful fallback if backend is offline during frontend-only validation
+      // The request never reached the server. Nothing is stored client-side.
       setStatusType('error');
-      setStatusMsg('Connection offline. Your details have been cached locally. (Resend API offline or Vercel dev server not running)');
-      console.warn("API offline. Details cached locally:", formData);
+      setStatusMsg('We could not reach the server, so your brief was not sent. Please email hello@buildlyone.com instead.');
     } finally {
       setIsSubmitting(false);
     }
@@ -117,15 +89,6 @@ function App() {
             <a href="#work" className="nav-link">Work</a>
             <a href="#approach" className="nav-link">Approach</a>
             <a href="#about" className="nav-link">About</a>
-            <button 
-              type="button" 
-              className="theme-toggle-btn"
-              onClick={toggleTheme}
-              aria-label="Toggle visual theme"
-              style={{ display: 'none' }}
-            >
-              Theme: {theme === 'dark' ? 'Dark' : 'Light'}
-            </button>
             <a href="#contact" className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
               Start a conversation
             </a>
@@ -340,25 +303,6 @@ function App() {
             <div className="contact-map-wrapper">
               <img src="/images/13.jpeg" alt="Global network connectivity map showing buildlyone reach" className="contact-map-image blend-image" />
             </div>
-            
-            {/* Interactive selector for A/B testing CTAs */}
-            <div style={{ marginTop: '40px' }}>
-              <span className="form-label" style={{ fontSize: '0.75rem', marginBottom: '8px', display: 'block' }}>
-                CTA Variation (A/B Test)
-              </span>
-              <div className="cta-variations">
-                {ctaOptions.map((opt, idx) => (
-                  <button 
-                    key={idx}
-                    type="button" 
-                    className={`cta-variation-btn ${selectedCta === idx ? 'active' : ''}`}
-                    onClick={() => setSelectedCta(idx)}
-                  >
-                    {idx + 1}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="contact-form">
@@ -428,7 +372,7 @@ function App() {
               style={{ alignSelf: 'flex-start' }}
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : `${ctaOptions[selectedCta]} →`}
+              {isSubmitting ? 'Sending…' : 'Send us a brief →'}
             </button>
           </form>
         </div>
