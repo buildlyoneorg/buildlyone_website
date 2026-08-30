@@ -1,52 +1,8 @@
-@import './styles/tokens.css';
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
-
-
-/* Hard reset for architectural precision */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important; /* Force straight edges strictly across all elements */
-}
-
-html, body {
-  background-color: var(--bg-primary);
-  color: var(--fg-primary);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-slow), color var(--transition-slow);
-}
-
-/* Typography rules */
-h1, h2, h3, h4, .display-font {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  text-transform: none;
-}
-
-p, span, li, button, input, textarea {
-  font-family: var(--font-body);
-}
-
-/* Layout utilities */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-}
+/* ============================================================
+   LEGACY — pre-rebrand section rules.
+   Each block is deleted as its section is rebuilt in stages
+   6-11. This file should not exist by stage 11.
+   ============================================================ */
 
 /* Navigation bar */
 .navbar {
@@ -98,6 +54,7 @@ p, span, li, button, input, textarea {
     display: none;
   }
 }
+
 
 /* Hero Section */
 .hero {
@@ -282,38 +239,6 @@ p, span, li, button, input, textarea {
   }
 }
 
-/* Sections */
-.section {
-  padding: 100px 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: border-color var(--transition-slow);
-}
-
-.section-header {
-  margin-bottom: 60px;
-  max-width: 700px;
-}
-
-.section-label {
-  font-size: 0.85rem;
-  color: var(--fg-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.section-title {
-  font-size: 3rem;
-  color: var(--fg-primary);
-  margin-bottom: 24px;
-}
-
-.section-body {
-  font-size: 1.15rem;
-  color: var(--fg-secondary);
-  line-height: 1.7;
-}
 
 /* Services Grid (What we build) */
 .services-grid {
@@ -367,6 +292,7 @@ p, span, li, button, input, textarea {
   }
 }
 
+
 /* Process Timeline (How we work) */
 .process-list {
   display: flex;
@@ -412,6 +338,7 @@ p, span, li, button, input, textarea {
   }
 }
 
+
 /* Audience Tags (Who we work with) */
 .audience-tags {
   display: flex;
@@ -436,6 +363,7 @@ p, span, li, button, input, textarea {
   border-top: 1px solid var(--border-color);
   padding-top: 24px;
 }
+
 
 /* Differentiators (Why buildlyone) */
 .diff-grid {
@@ -464,6 +392,7 @@ p, span, li, button, input, textarea {
     gap: 32px;
   }
 }
+
 
 /* Contact Intake Section */
 .contact-section {
@@ -549,6 +478,7 @@ p, span, li, button, input, textarea {
   }
 }
 
+
 /* Footer */
 .footer {
   padding: 80px 0;
@@ -627,6 +557,7 @@ p, span, li, button, input, textarea {
   }
 }
 
+
 /* Image Blending and Filters for Wireframe Graphics */
 .blend-image {
   mix-blend-mode: multiply;
@@ -691,5 +622,3 @@ p, span, li, button, input, textarea {
 .hero-dot.active {
   background-color: var(--fg-primary);
 }
-
-

@@ -36,12 +36,9 @@
   --clay-soft: #f0e3de;
 
   /* ---------- 3. TYPE ---------- */
-  /* Stage 4 replaces these with self-hosted Newsreader / Inter /
-     JetBrains Mono. Families are swapped there, not here, so this
-     commit changes colour only. */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
+  --font-body:    'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, monospace;
 
   --weight-display: 400;  /* the only display weight that exists */
   --weight-body:    400;
