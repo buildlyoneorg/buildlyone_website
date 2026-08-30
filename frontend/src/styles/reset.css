@@ -1,21 +1,88 @@
-/* Reset. Scoped, not universal — see the note on border-radius. */
+/* Reset. Scoped, not universal.
 
-/* Hard reset for architectural precision */
-* {
+   The previous sheet carried `border-radius: 0 !important` on the
+   universal selector. It produced the right look and forced every
+   future component to fight the cascade to do anything else. The
+   radius rule is now scoped to the elements that ship a UA radius, and
+   carries no !important. There are no radius tokens; that is the
+   enforcement. */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0 !important; /* Force straight edges strictly across all elements */
 }
 
-html, body {
-  background-color: var(--bg-primary);
-  color: var(--fg-primary);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+textarea,
+select,
+fieldset,
+img {
+  border-radius: 0;
+}
+
+html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + var(--space-5));
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: var(--weight-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-slow), color var(--transition-slow);
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.skiplink {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(-1 * var(--space-12));
+  z-index: 100;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-xs);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top var(--dur-ui) var(--ease-out);
+}
+
+.skiplink:focus {
+  top: var(--space-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
