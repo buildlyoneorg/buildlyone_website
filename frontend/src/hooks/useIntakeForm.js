@@ -44,11 +44,22 @@ export default function useIntakeForm({ fields, endpoint = '/api/send', messages
         setStatus('success');
         setMessage(messages.successMessage);
         setValues(empty);
-      } else {
+        return;
+      }
+
+      // Only a 400 is the sender's to fix. Anything else is ours, and
+      // telling someone to "check the required fields" when the server
+      // is down sends them round a loop they cannot win — so those get
+      // the fallback address instead.
+      if (res.status === 400 && data.error) {
         setStatus('error');
-        setMessage(data.error || messages.errorMessage);
+        setMessage(data.error);
+      } else {
+        setStatus('offline');
+        setMessage(messages.offlineMessage);
       }
     } catch {
+      // fetch itself threw: no network, or nothing listening.
       setStatus('offline');
       setMessage(messages.offlineMessage);
     }

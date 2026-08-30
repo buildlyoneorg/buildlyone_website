@@ -66,11 +66,13 @@ export const intake = {
 
   successMessage:
     'Received. ' + responsePromise,
+  // Shown only for a 400, i.e. something the sender can actually fix.
   errorMessage:
-    'Something in that did not go through. Check the required fields and try again.',
-  // Must never claim the submission was stored. It was not.
+    'Something in that did not go through. Check the fields and try again.',
+  // Shown when the failure is ours: no network, or the server errored.
+  // Must never claim the submission was stored, because it was not.
   offlineMessage:
-    'We could not reach the server, so this was not sent. Please email us directly instead.',
+    'That did not send, and the fault is on our end rather than yours. Please email us directly and we will pick it up:',
 
   fallbackEmail: 'hello@buildlyone.com',
   privacyNote:

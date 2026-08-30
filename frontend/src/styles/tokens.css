@@ -20,7 +20,7 @@
   --paper-sunken:   #eeece6;
   --ink:            #141413;
   --ink-secondary:  #3d3d3a;
-  --ink-muted:      #87867f;
+  --ink-muted:      #6b6a64;
   --hairline:       #e8e6dc;
 
   /* ink surface (the sectional invert) */
@@ -96,15 +96,31 @@
   --enter-shift:   8px;
 }
 
+/* Reduce, not remove: the translate goes, the fade stays. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --enter-shift: 0px;
+    --dur-hover: 1ms;
+    --dur-ui: 1ms;
+    --dur-enter: 120ms;
+  }
+}
+
 /* ============================================================
    2. SEMANTIC LAYER — the only tokens components may reference.
 
    CONTRAST RULE:
-   --fg-muted on paper is ~3.0:1. Legal for hairline decoration
-   and 18px+ display text ONLY. Every mono micro-label renders at
-   11-12px and must therefore use --fg-secondary (~8.9:1 on paper,
-   ~9.4:1 on ink). MonoLabel defaults to `secondary` for this
-   reason; `muted` is opt-in and never valid under 18px.
+   All three foreground tokens clear WCAG AA for normal text against
+   their own surface. The mono layer renders at 11-12px and carries
+   real content -- the story disclosure caption, the stack line, the
+   measurement notes -- so none of it can sit below 4.5:1.
+
+     paper   fg 16.3:1   fg-secondary 9.7:1   fg-muted 4.8:1
+     ink     fg 16.3:1   fg-secondary 9.1:1   fg-muted 5.0:1
+
+   --ink-muted started at #87867f, which is 3.2:1 on paper: acceptable
+   for a hairline, not for an 11px caption someone has to read.
+   Darkened to #6b6a64. If you lighten it again, measure it first.
    ============================================================ */
 
 :root,
