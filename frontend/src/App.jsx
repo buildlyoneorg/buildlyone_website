@@ -1,4 +1,5 @@
 import { site, hero, nav, problems, method, team, intake, footer } from './content/index.js';
+import useHashLanding from './hooks/useHashLanding.js';
 
 import SiteHeader from './components/sections/SiteHeader.jsx';
 import Hero from './components/sections/Hero.jsx';
@@ -11,6 +12,8 @@ import Intake from './components/sections/Intake.jsx';
 import SiteFooter from './components/sections/SiteFooter.jsx';
 
 export default function App() {
+  useHashLanding();
+
   return (
     <>
       <a href="#problems" className="skiplink">Skip to content</a>
