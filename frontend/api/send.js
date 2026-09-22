@@ -106,8 +106,8 @@ async function send(req, res) {
       }
     }
 
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'info@buildlyone.com';
-    const fromAddress = process.env.MAIL_FROM || 'buildlyone <info@buildlyone.com>';
+    const notificationEmail = process.env.NOTIFICATION_EMAIL || 'hello@buildlyone.com';
+    const fromAddress = process.env.MAIL_FROM || 'buildlyone <hello@buildlyone.com>';
 
     const { data, error } = await resend.emails.send({
       from: fromAddress,

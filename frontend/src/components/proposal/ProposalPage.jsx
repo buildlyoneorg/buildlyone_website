@@ -323,7 +323,7 @@ function ProposalPage() {
               <p>The next step is a scope confirmation meeting. After that, the agreed screens, acceptance tests, schedule, and contract are issued.</p>
             </div>
             <div className="proposal-close__actions">
-              <a className="proposal-action proposal-action--primary" href={`mailto:info@buildlyone.com?subject=${mailSubject}&body=${mailBody}`}>Approve selected package</a>
+              <a className="proposal-action proposal-action--primary" href={`mailto:hello@buildlyone.com?subject=${mailSubject}&body=${mailBody}`}>Approve selected package</a>
               <button className="proposal-action proposal-action--secondary" type="button" onClick={() => window.print()}>Print or save PDF</button>
             </div>
           </div>
@@ -334,7 +334,7 @@ function ProposalPage() {
         <div className="container proposal-footer__inner">
           <p>buildlyone</p>
           <p className="mono">Technology that does the job it was bought to do.</p>
-          <a href="mailto:info@buildlyone.com">info@buildlyone.com</a>
+          <a href="mailto:hello@buildlyone.com">hello@buildlyone.com</a>
           <a href="tel:+2347037942951">+234 703 794 2951</a>
         </div>
       </footer>
