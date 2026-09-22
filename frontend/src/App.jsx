@@ -33,7 +33,7 @@ export default function App() {
           <MethodSteps steps={method.steps} stats={method.stats} />
           <RefusalList refusals={method.refusals} problems={problems} />
         </main>
-        <SiteFooter footer={footer} brand={site.name} email={site.email} nav={nav} />
+        <SiteFooter footer={footer} brand={site.name} email={site.email} phone={site.phone} phoneLabel={site.phoneLabel} nav={nav} />
       </>
     );
   }
@@ -50,7 +50,7 @@ export default function App() {
           <main>
             <ProblemDetail problem={problem} primaryAction={site.primaryAction} standalone />
           </main>
-          <SiteFooter footer={footer} brand={site.name} email={site.email} nav={nav} />
+          <SiteFooter footer={footer} brand={site.name} email={site.email} phone={site.phone} phoneLabel={site.phoneLabel} nav={nav} />
         </>
       );
     }
@@ -82,7 +82,7 @@ export default function App() {
         <Intake intake={intake} />
       </main>
 
-      <SiteFooter footer={footer} brand={site.name} email={site.email} nav={nav} />
+      <SiteFooter footer={footer} brand={site.name} email={site.email} phone={site.phone} phoneLabel={site.phoneLabel} nav={nav} />
     </>
   );
 }

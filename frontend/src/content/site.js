@@ -8,7 +8,9 @@
 export const site = {
   name: 'buildlyone',
   url: 'https://buildlyone.com',
-  email: 'hello@buildlyone.com',
+  email: 'info@buildlyone.com',
+  phone: '+2347037942951',
+  phoneLabel: '+234 703 794 2951',
 
   title: 'buildlyone — technology that does the job it was bought to do',
   positioning:

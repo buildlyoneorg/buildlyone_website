@@ -73,7 +73,7 @@ export const intake = {
   offlineMessage:
     'That did not send, and the fault is on our end rather than yours. Please email us directly and we will pick it up:',
 
-  fallbackEmail: 'hello@buildlyone.com',
+  fallbackEmail: 'info@buildlyone.com',
   privacyNote:
     'What you send reaches us by email and is used to answer you. It is not added to a mailing list and is not shared.',
 };

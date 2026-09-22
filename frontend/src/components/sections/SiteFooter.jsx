@@ -1,7 +1,7 @@
 import Container from '../layout/Container.jsx';
 import MonoLabel from '../primitives/MonoLabel.jsx';
 
-export default function SiteFooter({ footer, brand, email, nav }) {
+export default function SiteFooter({ footer, brand, email, phone, phoneLabel, nav }) {
   return (
     <footer className="sitefooter" data-surface="ink">
       <Container>
@@ -15,6 +15,7 @@ export default function SiteFooter({ footer, brand, email, nav }) {
               <a key={i.href} href={i.href} className="sitefooter__link">{i.label}</a>
             ))}
             <a href={`mailto:${email}`} className="sitefooter__link">{email}</a>
+            <a href={`tel:${phone}`} className="sitefooter__link">{phoneLabel}</a>
           </nav>
         </div>
 
