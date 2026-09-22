@@ -1,0 +1,102 @@
+/* Typography: font loading, metric-matched fallbacks, base type, the mono layer. */
+
+/* Self-hosted, latin-subset, one weight per family. 72 KB total.
+   Loaded from /fonts, preloaded in index.html. */
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fonts/newsreader-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC,
+    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Metric-matched fallbacks. size-adjust is computed from a
+   frequency-weighted average advance over the lowercase alphabet plus
+   space, then the webfont's vertical metrics are restated in the
+   adjusted em. Generated with fontTools -- do not hand-edit these
+   numbers; regenerate if a family changes. */
+
+@font-face {
+  font-family: 'Newsreader Fallback';
+  src: local('Georgia');
+  size-adjust: 96.07%;
+  ascent-override: 76.51%;
+  descent-override: 27.58%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Helvetica');
+  size-adjust: 107.51%;
+  ascent-override: 90.11%;
+  descent-override: 22.44%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Menlo');
+  size-adjust: 99.66%;
+  ascent-override: 102.35%;
+  descent-override: 30.10%;
+  line-gap-override: 0.00%;
+}
+
+/* Typography rules */
+h1, h2, h3, h4, .display-font {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: none;
+}
+
+p, span, li, button, input, textarea {
+  font-family: var(--font-body);
+}
+
+/* The mono layer. Single entry point: the MonoLabel component.
+   Colour is --fg-secondary, never --fg-muted: these render at 11-12px
+   and --fg-muted is only ~3.0:1 on paper. */
+.mono {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-mono);
+  font-size: var(--text-mono-xs);
+  line-height: var(--leading-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* One weight per family, so emphasis comes from the mono layer, size,
+   and --fg vs --fg-secondary. Never from bold. */
+strong, b {
+  font-weight: inherit;
+  color: var(--fg);
+}

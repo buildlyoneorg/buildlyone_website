@@ -1,0 +1,182 @@
+/* ============================================================
+   buildlyone — design tokens
+   ------------------------------------------------------------
+   Two layers:
+     1. RAW PALETTE   — literal values. Never referenced by
+                        component CSS.
+     2. SEMANTIC      — the only tokens components may use.
+                        Remapped per surface by [data-surface].
+
+   Warm-editorial paper, ink invert by section, mono accent.
+   No radius tokens and no shadow tokens exist: their absence
+   is the enforcement.
+   ============================================================ */
+
+:root {
+  /* ---------- 1. RAW PALETTE ---------- */
+
+  /* paper surface */
+  --paper:          #f3f1ec;
+  --paper-sunken:   #eeece6;
+  --ink:            #141413;
+  --ink-secondary:  #3d3d3a;
+  --ink-muted:      #6b6a64;
+  --hairline:       #e8e6dc;
+
+  /* ink surface (the sectional invert) */
+  --ink-surface:            #141413;
+  --ink-surface-sunken:     #1b1b19;
+  --paper-on-ink:           #f3f1ec;
+  --paper-on-ink-secondary: #b8b6ae;
+  --paper-on-ink-muted:     #87867f;
+  --hairline-on-ink:        #2a2a27;
+
+  /* the one non-neutral: failure only, never decoration */
+  --clay:      #a8442a;
+  --clay-soft: #f0e3de;
+
+  /* ---------- 3. TYPE ---------- */
+  --font-display: 'Newsreader', 'Newsreader Fallback', Georgia, serif;
+  --font-body:    'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, monospace;
+
+  --weight-display: 400;  /* the only display weight that exists */
+  --weight-body:    400;
+  --weight-mono:    400;
+
+  --text-mono-xs: 0.6875rem;                                  /* 11px */
+  --text-mono-sm: 0.75rem;                                    /* 12px */
+  --text-xs:      0.8125rem;
+  --text-sm:      0.9375rem;
+  --text-base:    clamp(1.0625rem, 1rem + 0.22vw, 1.1875rem); /* 17 -> 19px */
+  --text-lg:      clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+  --display-4:    clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --display-3:    clamp(1.625rem, 1.35rem + 1.3vw, 2.25rem);
+  --display-2:    clamp(2.125rem, 1.5rem + 2.8vw, 3.5rem);
+  --display-1:    clamp(2.75rem, 1.6rem + 5.2vw, 5.25rem);
+
+  --leading-display: 1.04;
+  --leading-title:   1.14;
+  --leading-tight:   1.3;
+  --leading-body:    1.6;
+  --leading-mono:    1.4;
+
+  --tracking-display: -0.02em;
+  --tracking-body:     0;
+  --tracking-mono:     0.09em;   /* the engineering signal */
+
+  --measure:       66ch;
+  --measure-tight: 46ch;
+  --measure-wide:  72ch;
+
+  /* ---------- 4. SPACE & LAYOUT ---------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 24px;  --space-6: 32px;  --space-7: 40px;  --space-8: 56px;
+  --space-9: 72px;  --space-10: 96px; --space-11: 128px; --space-12: 160px;
+
+  --section-y:       clamp(72px, 9vw, 144px);
+  --section-y-tight: clamp(48px, 6vw, 88px);
+  --gutter:          clamp(20px, 4vw, 48px);
+  --grid-gap:        clamp(24px, 3vw, 48px);
+
+  --container:        1200px;
+  --container-narrow: 760px;
+  --container-wide:   1360px;
+
+  --rule-width: 1px;
+  --header-h:   72px;
+  --index-col:  clamp(48px, 6vw, 96px);   /* the mono number gutter */
+
+  /* ---------- 5. MOTION ---------- */
+  --dur-hover:     140ms;
+  --dur-ui:        200ms;
+  --dur-enter:     240ms;
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --enter-shift:   8px;
+}
+
+/* Reduce, not remove: the translate goes, the fade stays. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --enter-shift: 0px;
+    --dur-hover: 1ms;
+    --dur-ui: 1ms;
+    --dur-enter: 120ms;
+  }
+}
+
+/* ============================================================
+   2. SEMANTIC LAYER — the only tokens components may reference.
+
+   CONTRAST RULE:
+   All three foreground tokens clear WCAG AA for normal text against
+   their own surface. The mono layer renders at 11-12px and carries
+   real content -- the story disclosure caption, the stack line, the
+   measurement notes -- so none of it can sit below 4.5:1.
+
+     paper   fg 16.3:1   fg-secondary 9.7:1   fg-muted 4.8:1
+     ink     fg 16.3:1   fg-secondary 9.1:1   fg-muted 5.0:1
+
+   --ink-muted started at #87867f, which is 3.2:1 on paper: acceptable
+   for a hairline, not for an 11px caption someone has to read.
+   Darkened to #6b6a64. If you lighten it again, measure it first.
+   ============================================================ */
+
+:root,
+[data-surface='paper'] {
+  --surface:        var(--paper);
+  --surface-sunken: var(--paper-sunken);
+  --fg:             var(--ink);
+  --fg-secondary:   var(--ink-secondary);
+  --fg-muted:       var(--ink-muted);
+  --rule:           var(--hairline);
+  --field-rule:     var(--ink-secondary);
+  --focus-ring:     var(--ink);
+  --btn-bg:         var(--ink);
+  --btn-fg:         var(--paper);
+  --selection-bg:   var(--ink);
+  --selection-fg:   var(--paper);
+  --error-fg:       var(--clay);
+  --error-rule:     var(--clay);
+  --error-bg:       var(--clay-soft);
+}
+
+[data-surface='ink'] {
+  --surface:        var(--ink-surface);
+  --surface-sunken: var(--ink-surface-sunken);
+  --fg:             var(--paper-on-ink);
+  --fg-secondary:   var(--paper-on-ink-secondary);
+  --fg-muted:       var(--paper-on-ink-muted);
+  --rule:           var(--hairline-on-ink);
+  --field-rule:     var(--paper-on-ink-secondary);
+  --focus-ring:     var(--paper-on-ink);
+  --btn-bg:         var(--paper-on-ink);
+  --btn-fg:         var(--ink-surface);
+  --selection-bg:   var(--paper-on-ink);
+  --selection-fg:   var(--ink-surface);
+  --error-fg:       #e8a5a5;
+  --error-rule:     #6b2f22;
+  --error-bg:       rgba(168, 68, 42, 0.14);
+}
+
+/* ============================================================
+   LEGACY ALIASES — consumed by the pre-rebrand rules still in
+   index.css. Each is deleted as its section is rebuilt in
+   stages 6-11; this block should be empty by stage 11.
+   ============================================================ */
+
+:root {
+  --bg-primary:         var(--surface);
+  --fg-primary:         var(--fg);
+  --white:              var(--fg);
+  --border-color:       var(--rule);
+  --border-hover:       var(--fg-muted);
+  --card-bg:            var(--surface-sunken);
+  --card-hover-bg:      var(--surface-sunken);
+  --input-focus-border: var(--focus-ring);
+  --status-success-bg:  var(--surface-sunken);
+
+  --transition-slow:   var(--dur-enter) var(--ease-out);
+  --transition-medium: var(--dur-ui) var(--ease-out);
+}

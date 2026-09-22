@@ -1,0 +1,28 @@
+/* Motion.
+
+   Durations live in tokens.css. The ceiling is deliberate: IBM Carbon's
+   rule is that most component motion lands between 100 and 300ms, and
+   that applied properly, motion goes unnoticed.
+
+   There is no entrance animation on this site. Scroll-triggered reveals
+   carry mood rather than information, and the review evidence is that
+   they pull attention onto the animation and away from the words. On a
+   page whose whole argument is the words, that is a bad trade -- so the
+   only motion here is on hover and focus, where it confirms an action
+   the reader took.
+
+   Nothing moves on its own, which also means there is nothing to pause:
+   WCAG 2.2.2 is satisfied by not having the problem. */
+
+/* Reduce, not remove. The token layer collapses --enter-shift and
+   shortens durations under reduced motion; hover and focus feedback
+   survives, because stripping all feedback is its own failure. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--dur-ui) !important;
+  }
+}
