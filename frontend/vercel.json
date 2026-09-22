@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/proposal",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/method",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/problems/:id",
+      "destination": "/index.html"
+    }
+  ]
+}
