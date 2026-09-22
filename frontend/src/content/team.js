@@ -1,26 +1,21 @@
 /**
- * The team.
+ * The engagement model.
  *
- * Named, roles only — no project histories, no outbound links. That is
- * a deliberate choice and it is worth knowing what it costs: team
- * expertise is the factor buyers weigh most heavily when choosing a
- * firm, and they typically verify it across several independent
- * sources. A name with nothing checkable behind it does less work than
- * it looks like it does. Revisit if enquiries stall here.
+ * Real names are omitted until there is a complete, approved roster.
+ * The page explains what the client can hold the engagement to rather
+ * than publishing placeholders or implying a team that is not named.
  *
  * @type {import('./types.js').TeamContent}
  */
 export const team = {
-  kicker: 'Who we are',
-  title: 'A small practice, named.',
-  lede: 'The people who do the diagnosis are the people who do the build. There is no account layer between you and the person writing the code.',
-
-  // TK — REPLACE BEFORE LAUNCH. These are placeholders, not people.
-  // Real names and roles required; `npm run check:content` fails while
-  // any TK marker survives.
-  people: [
-    { id: 'p1', name: 'TK Name', role: 'TK Role', focus: 'TK — six to twelve words on discipline.' },
-    { id: 'p2', name: 'TK Name', role: 'TK Role', focus: 'TK — six to twelve words on discipline.' },
+  kicker: 'How we engage',
+  title: 'Direct access to the people doing the work.',
+  lede: 'The engagement is structured to keep diagnosis, decisions, and implementation close together. Named team profiles can be added when they are ready to be published.',
+  people: [],
+  principles: [
+    { id: 'e1', title: 'One accountable team', detail: 'The people diagnosing the problem remain involved in the build and handover.' },
+    { id: 'e2', title: 'Decisions written down', detail: 'Important trade-offs, assumptions, and exclusions are recorded before they become code.' },
+    { id: 'e3', title: 'A handover that works', detail: 'Access, documentation, and operating knowledge move to your team rather than staying with a supplier.' },
   ],
 };
 

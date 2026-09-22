@@ -14,8 +14,8 @@ export const site = {
   positioning:
     'buildlyone is a software engineering practice for businesses whose systems have stopped keeping up with them. We diagnose before we build, and we publish the method.',
 
-  primaryAction: { label: 'Start a conversation', href: '#start' },
-  secondaryAction: { label: 'Read the method', href: '#method' },
+  primaryAction: { label: 'Start a conversation', href: '/#start' },
+  secondaryAction: { label: 'Read the method', href: '/method' },
 };
 
 /**
@@ -28,7 +28,7 @@ export const site = {
  * No adjectives about ourselves, no mention of AI, no image.
  */
 export const hero = {
-  kicker: 'Software engineering for businesses',
+  kicker: 'Software engineering for consequential operations',
   headline: 'The software runs. The business still waits.',
   body: [
     'Somewhere between the order coming in and the money arriving, a person is copying numbers between two screens, a spreadsheet is doing a job nobody chose for it, and a question that should take a second takes a phone call.',

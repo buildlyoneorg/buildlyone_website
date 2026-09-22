@@ -9,9 +9,8 @@
  * @type {import('./types.js').IntakeContent}
  */
 
-/** TK — CONFIRM. Rendered on the page and in the confirmation email.
- *  Unresponsiveness is the second most common reason buyers rule a
- *  supplier out, so this must be a promise that will actually be kept. */
+/** Rendered on the page and in the confirmation email. Keep this only
+ *  while the two-working-day response promise can actually be met. */
 export const responsePromise = 'We reply within two working days, to every enquiry, from a person.';
 
 export const intake = {

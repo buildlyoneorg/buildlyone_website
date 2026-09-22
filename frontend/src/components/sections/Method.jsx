@@ -3,6 +3,32 @@ import Container from '../layout/Container.jsx';
 import SectionHeader from '../primitives/SectionHeader.jsx';
 import MonoLabel from '../primitives/MonoLabel.jsx';
 import StatLine from '../primitives/StatLine.jsx';
+import ButtonLink from '../primitives/ButtonLink.jsx';
+
+export function MethodPreview({ steps }) {
+  return (
+    <Section id="method" labelledBy="method-preview-title">
+      <Container>
+        <SectionHeader
+          id="method-preview-title"
+          kicker="How we work"
+          title="Diagnose before prescribing."
+          lede="The first job is to find the earliest break in the work, state what we know, and rule out the attractive wrong answers."
+        />
+        <ol className="method-preview">
+          {steps.map((step) => (
+            <li key={step.id} className="method-preview__item">
+              <MonoLabel>{step.number}</MonoLabel>
+              <h3>{step.title}</h3>
+              <p>{step.statement}</p>
+            </li>
+          ))}
+        </ol>
+        <ButtonLink href="/method" className="method-preview__cta">Read the full method</ButtonLink>
+      </Container>
+    </Section>
+  );
+}
 
 /**
  * The manifesto sits on ink; the document below it sits on paper.

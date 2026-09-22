@@ -11,6 +11,7 @@
 export { site, hero } from './site.js';
 export { nav } from './nav.js';
 export { problems } from './problems.js';
+export { audience } from './audience.js';
 export { method } from './method.js';
 export { team } from './team.js';
 export { intake, responsePromise } from './intake.js';
@@ -19,9 +20,9 @@ export { footer } from './footer.js';
 export const sections = [
   { id: 'hero', component: 'Hero', surface: 'ink' },
   { id: 'problems', component: 'ProblemIndex', surface: 'paper' },
-  { id: 'problem-detail', component: 'ProblemDetail', surface: 'paper', repeatOver: 'problems' },
-  { id: 'method', component: 'Method', surface: 'paper' },
-  { id: 'refusals', component: 'RefusalList', surface: 'paper' },
-  { id: 'team', component: 'Team', surface: 'paper' },
+  { id: 'audience', component: 'Audience', surface: 'ink' },
+  { id: 'method', component: 'MethodPreview', surface: 'paper' },
+  { id: 'refusals', component: 'RefusalPreview', surface: 'paper' },
+  { id: 'engagement', component: 'Team', surface: 'paper' },
   { id: 'start', component: 'Intake', surface: 'paper' },
 ];

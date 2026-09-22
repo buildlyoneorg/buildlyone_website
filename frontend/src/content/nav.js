@@ -14,13 +14,13 @@ import { site } from './site.js';
  */
 export const nav = {
   items: [
-    { label: 'Problems', href: '#problems' },
-    { label: 'Method', href: '#method' },
-    { label: 'Who we are', href: '#team' },
+    { label: 'Problems', href: '/#problems' },
+    { label: 'Method', href: '/method' },
+    { label: 'How we engage', href: '/#engagement' },
   ],
   problemLinks: problems.map((p) => ({
     label: p.symptom,
-    href: `#problem-${p.id}`,
+    href: `/problems/${p.id}`,
     number: p.number,
   })),
   action: site.primaryAction,

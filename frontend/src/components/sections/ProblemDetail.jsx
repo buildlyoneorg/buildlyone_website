@@ -24,13 +24,14 @@ function Story({ story }) {
   );
 }
 
-export default function ProblemDetail({ problem, primaryAction }) {
+export default function ProblemDetail({ problem, primaryAction, standalone = false }) {
   const p = problem;
   const titleId = `problem-${p.id}-title`;
 
   return (
     <Section id={`problem-${p.id}`} labelledBy={titleId}>
       <Container>
+        {standalone && <a className="backlink mono" href="/#problems">← All four problems</a>}
         <SectionHeader id={titleId} index={p.number} kicker="Problem" title={p.symptom} size="large" />
 
         <div className="pdetail">

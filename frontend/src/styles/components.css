@@ -171,6 +171,66 @@ a.nrow__title:hover { opacity: 0.55; }
 
 .nrow__meta { margin-top: var(--space-3); }
 
+.backlink {
+  display: inline-block;
+  margin-bottom: var(--space-8);
+  color: var(--fg-secondary);
+  text-decoration: none;
+}
+
+.backlink:hover { color: var(--fg); }
+
+/* ---------- priority audiences ---------- */
+
+.audience-grid,
+.method-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  border-top: var(--rule-width) solid var(--rule);
+  border-left: var(--rule-width) solid var(--rule);
+}
+
+.audience-item,
+.method-preview__item {
+  min-height: 250px;
+  padding: var(--space-6);
+  border-right: var(--rule-width) solid var(--rule);
+  border-bottom: var(--rule-width) solid var(--rule);
+}
+
+.audience-item h3,
+.method-preview__item h3 {
+  margin-top: var(--space-7);
+  font-family: var(--font-display);
+  font-size: var(--display-4);
+  line-height: var(--leading-title);
+}
+
+.audience-item p,
+.method-preview__item p {
+  margin-top: var(--space-4);
+  color: var(--fg-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.method-preview { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.method-preview__cta,
+.refusal-preview__cta { margin-top: var(--space-7); }
+
+@media (max-width: 900px) {
+  .audience-grid,
+  .method-preview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .audience-grid,
+  .method-preview { grid-template-columns: 1fr; }
+  .audience-item,
+  .method-preview__item { min-height: 0; }
+}
+
 /* ---------- problem detail ---------- */
 
 .pdetail {

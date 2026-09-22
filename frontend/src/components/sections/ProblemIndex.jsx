@@ -19,7 +19,7 @@ export default function ProblemIndex({ problems }) {
               key={p.id}
               number={p.number}
               title={p.symptom}
-              href={`#problem-${p.id}`}
+              href={`/problems/${p.id}`}
               meta={p.villain}
             />
           ))}

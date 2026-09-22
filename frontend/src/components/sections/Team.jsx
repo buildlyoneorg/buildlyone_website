@@ -15,11 +15,17 @@ function PersonCard({ person }) {
 
 export default function Team({ team }) {
   return (
-    <Section id="team" labelledBy="team-title">
+    <Section id="engagement" labelledBy="engagement-title">
       <Container>
-        <SectionHeader id="team-title" kicker={team.kicker} title={team.title} lede={team.lede} />
+        <SectionHeader id="engagement-title" kicker={team.kicker} title={team.title} lede={team.lede} />
         <ul className="people">
           {team.people.map((p) => <PersonCard key={p.id} person={p} />)}
+          {team.principles.map((principle) => (
+            <li className="person" key={principle.id}>
+              <h3 className="person__name">{principle.title}</h3>
+              <p className="person__focus">{principle.detail}</p>
+            </li>
+          ))}
         </ul>
       </Container>
     </Section>

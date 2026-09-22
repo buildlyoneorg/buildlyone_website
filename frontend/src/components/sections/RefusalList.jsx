@@ -1,6 +1,31 @@
 import Section from '../layout/Section.jsx';
 import Container from '../layout/Container.jsx';
 import SectionHeader from '../primitives/SectionHeader.jsx';
+import ButtonLink from '../primitives/ButtonLink.jsx';
+
+export function RefusalPreview({ refusals }) {
+  return (
+    <Section id="refusals" labelledBy="refusals-preview-title">
+      <Container size="narrow">
+        <SectionHeader
+          id="refusals-preview-title"
+          kicker="Boundaries"
+          title="Four things we will not build."
+          lede="The boundary matters because each item below is work we could invoice for and should still decline."
+        />
+        <ul className="refusals">
+          {refusals.map((item) => (
+            <li className="refusal" key={item.statement}>
+              <p className="refusal__statement">{item.statement}</p>
+              <p className="refusal__reason">{item.reason}</p>
+            </li>
+          ))}
+        </ul>
+        <ButtonLink href="/method#refusals" className="refusal-preview__cta">Read every boundary</ButtonLink>
+      </Container>
+    </Section>
+  );
+}
 
 /**
  * What we will not build.

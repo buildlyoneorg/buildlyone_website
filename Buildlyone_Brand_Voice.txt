@@ -43,6 +43,10 @@ at the start of a sentence, in a headline, in a title, and in a logo.
 buildlyone is a software engineering practice for businesses whose systems have
 stopped keeping up with them.
 
+The broad market is businesses. The priority contexts are financial and
+regulated systems, operational software, and critical integrations — places
+where an error can move money, delay operations, or weaken oversight.
+
 We work with businesses, SMEs, and companies where technology has quietly
 stopped doing the job it was bought to do — where a person is the integration
 between two tools, where a spreadsheet has become the real database, where the
@@ -64,16 +68,19 @@ The four problems are the spine of everything we publish:
 
 03 — HOW WE EARN TRUST WITHOUT PROOF
 
-We have no case studies. Until that changes, credibility rests on two things,
-and both are published in full on the site:
+We have no case studies. Until that changes, credibility rests on two things:
+the method and the boundaries around the work. The homepage introduces both;
+their full detail lives on dedicated pages so a reader can inspect the evidence
+without every visitor having to read the whole argument.
 
 The method. Ten steps, what each one rules out, what you receive, and what we
-cannot claim. A firm without a method could not write it; a firm with a bad one
-could not survive publishing it. That asymmetry is the whole point.
+cannot claim. The homepage gives the first four steps and links to the complete
+method. A firm without a method could not write it; a firm with a bad one could
+not survive publishing it. That asymmetry is the whole point.
 
 The refusals. Ten things we will not build, each with the reason. A refusal
-that costs nothing is marketing. Every one of ours is work a less careful firm
-would happily invoice for.
+that costs nothing is marketing. The homepage gives four and links to the full
+list. Every one of ours is work a less careful firm would happily invoice for.
 
 Three rules follow from having no proof:
 
@@ -207,9 +214,9 @@ so there is nothing to pause.
 
 08 — OPEN
 
-  The team roster. Names and roles are placeholders until confirmed.
+  The team roster. It is not published until the names and roles are approved.
+    Until then, the site shows the engagement model and how responsibility works.
   The response-time promise. Currently two working days, on the page and in the
     confirmation email, from one shared constant. It has to be one we keep.
-  Pricing. Deliberately absent. Worth revisiting: absent pricing is the single
-    most common reason a B2B buyer rules out a supplier, and we have less than
-    most to hold a hesitant reader with.
+  Pricing. The marketing site has no generic price list. Scoped client proposals
+    are itemised, priced by phase, and explicit about what is excluded.

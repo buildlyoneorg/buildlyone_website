@@ -60,11 +60,11 @@ const api = readFileSync('api/send.js', 'utf8');
 const missing = intake.fields.map((f) => f.name).filter((n) => !api.includes(n));
 check(missing.length === 0, `every form field is read by api/send.js${missing.length ? `: missing ${missing}` : ''}`);
 
-// 8. Every named person has a role. A blank role is worse than no name.
+// 8. Every named person has a role. A blank role is worse than an unpublished roster.
 const { team } = await import('../src/content/team.js');
 check(
-  team.people.length > 0 && team.people.every((p) => p.name?.trim() && p.role?.trim()),
-  `every listed person has a name and a role (${team.people.length} listed)`,
+  team.people.every((p) => p.name?.trim() && p.role?.trim()) && team.principles.length > 0,
+  `every listed person has a name and a role; engagement model is present (${team.people.length} people listed)`,
 );
 
 // 9. Nav derives from problems.

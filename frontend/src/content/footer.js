@@ -11,6 +11,8 @@ export const footer = {
   tagline: 'Technology that does the job it was bought to do.',
   capabilitiesHeading: 'What that usually involves',
   capabilities: [
+    'Financial infrastructure',
+    'Regulated workflows',
     'Systems integration',
     'Process automation',
     'Legacy migration',

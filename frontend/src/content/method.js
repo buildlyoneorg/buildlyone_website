@@ -8,8 +8,8 @@ import { problems } from './problems.js';
  * section: it is the one thing here that a firm without a method could
  * not produce, and that a firm with a bad method could not publish.
  *
- * It is given away in full, deliberately. A business should be able to
- * run steps 1.0 through 1.3 without us.
+ * It is published in full on the dedicated method page. A business
+ * should be able to run steps 1.0 through 1.3 without us.
  *
  * @type {import('./types.js').Method}
  */
@@ -141,11 +141,11 @@ const methodSteps = [
     {
       id: '4.0',
       number: '4.0',
-      title: 'Tell you what we cannot claim',
+      title: 'Publish only what can be checked',
       statement:
-        'buildlyone has not yet delivered an engagement under its own name, and this site shows no client work because there is none to show.',
+        'We do not present borrowed logos, anonymous praise, or vague project descriptions as proof.',
       body: [
-        'Every number on this page can be checked by counting things on this page. The stories under each problem are labelled composites, not clients. When there is real work to point at, it will appear here with the client’s permission and our specific role stated.',
+        'Client work appears only with permission and with our specific role stated. Until then, illustrative stories remain labelled as composites, and every published number must be traceable to something a reader can inspect.',
       ],
     },
 ];
@@ -198,7 +198,7 @@ export const method = {
       {
         value: String(problemQuestions + stepQuestions),
         label: 'questions we ask before quoting',
-        verifiableBy: `${problemQuestions} under the four problems above, ${stepQuestions} in the steps below. Count them.`,
+        verifiableBy: `${problemQuestions} across the four problem pages, ${stepQuestions} in the steps below. Count them.`,
       },
       {
         value: String(artefacts),
@@ -210,17 +210,19 @@ export const method = {
         label: 'things we refuse to build',
         verifiableBy: 'Two under each problem above, two at the end of this section.',
       },
-      {
-        value: '0',
-        label: 'client case studies',
-        verifiableBy: 'There are none on this site because there are none. See 4.0.',
-      },
     ];
   },
 
   steps: methodSteps,
 
   refusals: globalRefusals,
+
+  homepageRefusals: [
+    problems[0].avoid[0],
+    problems[1].avoid[0],
+    problems[3].avoid[0],
+    globalRefusals[0],
+  ],
 };
 
 export default method;
