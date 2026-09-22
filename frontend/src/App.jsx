@@ -10,9 +10,14 @@ import RefusalList from './components/sections/RefusalList.jsx';
 import Team from './components/sections/Team.jsx';
 import Intake from './components/sections/Intake.jsx';
 import SiteFooter from './components/sections/SiteFooter.jsx';
+import ProposalPage from './components/proposal/ProposalPage.jsx';
 
 export default function App() {
   useHashLanding();
+
+  if (window.location.pathname.startsWith('/proposal')) {
+    return <ProposalPage />;
+  }
 
   return (
     <>
