@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ProposalPage from './components/proposal/ProposalPage.jsx';
 
 const heroImages = [
   { src: "/images/03.jpeg", alt: "Architectural 3D wireframe cube", label: "System Architecture [03]" },
@@ -106,6 +107,10 @@ function App() {
       setIsSubmitting(false);
     }
   };
+
+  if (window.location.pathname.startsWith('/proposal')) {
+    return <ProposalPage />;
+  }
 
   return (
     <div className="app-layout">
